@@ -15,7 +15,7 @@ import android.os.Bundle;
 
 프래그먼트 화면 전환은 리소스를 적게 사용하는 가벼운 화면 전환임
 
-
+프래그먼트는 뷰는 아니고 부분 화면을 담기 위한 틀임
  */
 
 public class MainActivity extends AppCompatActivity {
