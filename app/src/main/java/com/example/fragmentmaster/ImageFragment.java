@@ -11,13 +11,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class Fragment3 extends Fragment {
+public class ImageFragment extends Fragment {
 
     public static interface ImageSelectionCallback {
         public void onImageSelected(int position);
     }
 
-    public ImageSelectionCallback callback;
+    public ImageSelectionCallback callback; // 자료형이 Activity가 아니라 ImageSelectionCallback으로 선언한 이유 : 선택된 버튼에 따라 다른 프래그먼트의 이미지를 바꿔주려면
+    // 액티비티 쪽으로 데이터를 전달해야 하므로 액티비티에 onImageSelected()를 정의한 후 호출하도록 하기위해
 
     @Override
     public void onAttach(@NonNull Context context) { // 프래그먼트가 액티비티에 올라옴
