@@ -20,9 +20,23 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
+    Fragment1 fragment1;
+    Fragment2 fragment2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        fragment1 = (Fragment1)getSupportFragmentManager().findFragmentById(R.id.fragment); // 메인 액티비티에 있는 프래그먼트는 부분 화면들을 담기 위한 틀임
+        fragment2 = new Fragment2();
+    }
+
+    public void onFragmentChanged(int index) { // beginTransaction() : 프래그먼트를 변경하기 위한 트랜잭션을 시작함, replace() : 프래그먼트 화면 전환, commit() : 실행
+        if(index == 0) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment2).commit(); // 프래그먼트 매니저 객체를 사용할 때에는 트랜잭션이 사용됨(화면 전환 오류 발생 시 다시 원래 상태로 돌릴 수 있어야하므로)
+        } else if(index == 1) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment1).commit();
+        }
     }
 }
