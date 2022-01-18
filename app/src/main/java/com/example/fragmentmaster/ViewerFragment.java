@@ -7,58 +7,23 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ViewerFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ViewerFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public ViewerFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ViewerFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ViewerFragment newInstance(String param1, String param2) {
-        ViewerFragment fragment = new ViewerFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    ImageView img1;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) { // 인플레이션이 필요한 시점에 자동 호출됨
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_viewer, container, false); // rootView는 최상위 레이아웃, 인플레이션을 통해 참조한 객체임
+        // -> 인플레이션 과정이 끝나고나면 프래그먼트가 하나의 뷰처럼 동작할 수 있는 상태가 됨
+
+        img1 = rootView.findViewById(R.id.img1);
+        return rootView; // 인플레이션한 rootView를 리턴 -> 프래그먼트 화면으로 보여짐
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_viewer, container, false);
+    public void setImage(int resId) {
+        img1.setImageResource(resId); // 액티비티에서 이 프래그먼트에 있는 이미지뷰에 이미지를 설정할 수 있도록 함
     }
 }

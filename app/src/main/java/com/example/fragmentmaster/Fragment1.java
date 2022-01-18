@@ -21,7 +21,7 @@ public class Fragment1 extends Fragment {
             @Override
             public void onClick(View view) {
                 MainActivity activity = (MainActivity) getActivity();
-                activity.onFragmentChanged(0);
+                //activity.onFragmentChanged(0);
             }
         });
 

@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class ImageFragment extends Fragment {
+public class ListFragment extends Fragment {
 
     public static interface ImageSelectionCallback {
         public void onImageSelected(int position);

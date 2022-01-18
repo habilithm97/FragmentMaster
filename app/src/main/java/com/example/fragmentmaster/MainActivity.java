@@ -1,6 +1,7 @@
 package com.example.fragmentmaster;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 
@@ -40,29 +41,46 @@ import android.os.Bundle;
  -> onDestroy() : 프래그먼트의 상태를 마지막으로 정리할 수 있도록 호출됨
  -> onDetach() : 프래그먼트가 액티비티와 연결을 끊기 바로 전에 호출됨
 
-
-
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ListFragment.ImageSelectionCallback{
 
+    ListFragment listFragment;
+    ViewerFragment viewerFragment;
+
+    int[] images = {R.drawable.luck12, R.drawable.bang15, R.drawable.dingsung};
+
+    /*
     Fragment1 fragment1;
     Fragment2 fragment2;
+    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        FragmentManager manager = getSupportFragmentManager();
+        listFragment = (ListFragment)manager.findFragmentById(R.id.listFragment);
+        viewerFragment = (ViewerFragment)manager.findFragmentById(R.id.viewerFragment);
+
+        /*
         fragment1 = (Fragment1)getSupportFragmentManager().findFragmentById(R.id.fragment); // 메인 액티비티에 있는 프래그먼트는 부분 화면들을 담기 위한 틀임
         fragment2 = new Fragment2();
+         */
     }
 
+    @Override
+    public void onImageSelected(int position) {
+        viewerFragment.setImage(images[position]);
+    }
+
+    /*
     public void onFragmentChanged(int index) { // beginTransaction() : 프래그먼트를 변경하기 위한 트랜잭션을 시작함, replace() : 프래그먼트 화면 전환, commit() : 실행
         if(index == 0) {
             getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment2).commit(); // 프래그먼트 매니저 객체를 사용할 때에는 트랜잭션이 사용됨(화면 전환 오류 발생 시 다시 원래 상태로 돌릴 수 있어야하므로)
         } else if(index == 1) {
             getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment1).commit();
         }
-    }
+    } */
 }

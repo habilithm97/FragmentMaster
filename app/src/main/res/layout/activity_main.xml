@@ -6,9 +6,25 @@
     android:orientation="vertical">
 
     <fragment
+        android:id="@+id/listFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:name="com.example.fragmentmaster.ListFragment" />
+
+    <fragment
+        android:id="@+id/viewerFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:name="com.example.fragmentmaster.ViewerFragment" />
+
+
+    <!--
+    <fragment
         android:id="@+id/fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.example.fragmentmaster.Fragment1" />
+        android:name="com.example.fragmentmaster.Fragment1" /> -->
 
 </LinearLayout>
