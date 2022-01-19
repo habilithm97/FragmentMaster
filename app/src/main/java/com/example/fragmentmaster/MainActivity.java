@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements ListFragment.Imag
     ListFragment listFragment;
     ViewerFragment viewerFragment;
 
-    int[] images = {R.drawable.luck12, R.drawable.bang15, R.drawable.dingsung};
+    int[] images = {R.drawable.luck12, R.drawable.gitprofile, R.drawable.dingsung};
 
     /*
     Fragment1 fragment1;
