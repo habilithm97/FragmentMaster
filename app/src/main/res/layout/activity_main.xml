@@ -10,14 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:name="com.example.fragmentmaster.ListFragment" />
+        android:name="com.example.fragmentmaster.ButtonFragment" />
 
     <fragment
         android:id="@+id/viewerFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:name="com.example.fragmentmaster.ViewerFragment" />
+        android:name="com.example.fragmentmaster.ImageFragment" />
 
 
     <!--

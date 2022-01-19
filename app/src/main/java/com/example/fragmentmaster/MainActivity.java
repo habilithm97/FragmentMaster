@@ -43,10 +43,10 @@ import android.os.Bundle;
 
  */
 
-public class MainActivity extends AppCompatActivity implements ListFragment.ImageSelectionCallback{
+public class MainActivity extends AppCompatActivity implements ButtonFragment.ImageSelectionCallback{
 
-    ListFragment listFragment;
-    ViewerFragment viewerFragment;
+    ButtonFragment listFragment;
+    ImageFragment viewerFragment;
 
     int[] images = {R.drawable.luck12, R.drawable.gitprofile, R.drawable.dingsung};
 
@@ -61,8 +61,8 @@ public class MainActivity extends AppCompatActivity implements ListFragment.Imag
         setContentView(R.layout.activity_main);
 
         FragmentManager manager = getSupportFragmentManager();
-        listFragment = (ListFragment)manager.findFragmentById(R.id.listFragment);
-        viewerFragment = (ViewerFragment)manager.findFragmentById(R.id.viewerFragment);
+        listFragment = (ButtonFragment)manager.findFragmentById(R.id.listFragment);
+        viewerFragment = (ImageFragment)manager.findFragmentById(R.id.viewerFragment);
 
         /*
         fragment1 = (Fragment1)getSupportFragmentManager().findFragmentById(R.id.fragment); // 메인 액티비티에 있는 프래그먼트는 부분 화면들을 담기 위한 틀임

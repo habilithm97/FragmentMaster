@@ -11,7 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class ListFragment extends Fragment {
+// ButtonFragment 클래스에서 액티비티에게 알려줌 -> ImageFragment 클래스의 이미지 변화
+
+public class ButtonFragment extends Fragment {
 
     public static interface ImageSelectionCallback {
         public void onImageSelected(int position);

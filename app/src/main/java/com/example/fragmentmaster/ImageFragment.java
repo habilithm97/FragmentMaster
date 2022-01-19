@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class ViewerFragment extends Fragment {
+public class ImageFragment extends Fragment {
 
     ImageView img1;
 
