@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements ButtonFragment.Im
             EditText edt = view.findViewById(R.id.edt); // 검색 메뉴 아이템 안에 정의한 EditText 객체 참조
 
             if(edt != null) {
-                edt.setOnEditorActionListener(new TextView.OnEditorActionListener() { // EditText 객체 리스너 설정
+                edt.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                     @Override
                     public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
                         Toast.makeText(getApplicationContext(), "검색어를 입력했습니다. ", Toast.LENGTH_SHORT).show();
