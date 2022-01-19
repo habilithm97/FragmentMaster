@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--
+    always : 항상 액션바에 아이템을 표시함
+    never :  액션바에 아이템을 표시 안함(디폴트)
+    ifRoom : 액션바에 여유 공간이 있을 때만 아이템을 표시함
+    withText : 제목을 함께 표시함
+    collapseActionView : 아이콘만 표시함
+    -->
+
+    <item android:id="@+id/f5"
+        android:title="새로 고침"
+        android:icon="@drawable/f5"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/search"
+        android:title="검색"
+        android:icon="@drawable/f5"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/setting"
+        android:title="환경 설정"
+        android:icon="@drawable/f5"
+        app:showAsAction="always"/>
+
+</menu>

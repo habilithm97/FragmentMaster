@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
+import android.view.Menu;
 
 /*
 
@@ -68,6 +69,12 @@ public class MainActivity extends AppCompatActivity implements ButtonFragment.Im
         fragment1 = (Fragment1)getSupportFragmentManager().findFragmentById(R.id.fragment); // 메인 액티비티에 있는 프래그먼트는 부분 화면들을 담기 위한 틀임
         fragment2 = new Fragment2();
          */
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_test, menu); // 인플레이션
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
