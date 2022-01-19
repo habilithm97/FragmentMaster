@@ -1,10 +1,13 @@
 package com.example.fragmentmaster;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 /*
 
@@ -74,8 +77,27 @@ public class MainActivity extends AppCompatActivity implements ButtonFragment.Im
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_test, menu); // 인플레이션
-        return super.onCreateOptionsMenu(menu);
+        return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int selectedId = item.getItemId(); // 메뉴 아이템들을 가져옴
+        switch (selectedId) {
+            case R.id.f5:
+                Toast.makeText(getApplicationContext(), "새로고침 메뉴를 선택하였습니다. ", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.search:
+                Toast.makeText(getApplicationContext(), "검색 메뉴를 선택하였습니다. ", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.setting:
+                Toast.makeText(getApplicationContext(), "환경 설정 메뉴를 선택하였습니다. ", Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    } //
 
     @Override
     public void onImageSelected(int position) {
