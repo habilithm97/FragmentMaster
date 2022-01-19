@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /*
@@ -76,7 +80,22 @@ public class MainActivity extends AppCompatActivity implements ButtonFragment.Im
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_test, menu); // 인플레이션
+        getMenuInflater().inflate(R.menu.menu_test, menu); // 인플레이션하여 메모리에 로딩
+
+        View view = menu.findItem(R.id.search2).getActionView(); // 메뉴 아이템 중에서 검색을 위해 정의한 아이템템을 뷰 객체로 참조함
+        if(view != null) {
+            EditText edt = view.findViewById(R.id.edt); // 검색 메뉴 아이템 안에 정의한 EditText 객체 참조
+
+            if(edt != null) {
+                edt.setOnEditorActionListener(new TextView.OnEditorActionListener() { // EditText 객체 리스너 설정
+                    @Override
+                    public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+                        Toast.makeText(getApplicationContext(), "검색어를 입력했습니다. ", Toast.LENGTH_SHORT).show();
+                        return true;
+                    }
+                });
+            }
+        }
         return true;
     }
 
@@ -88,9 +107,9 @@ public class MainActivity extends AppCompatActivity implements ButtonFragment.Im
                 Toast.makeText(getApplicationContext(), "새로고침 메뉴를 선택하였습니다. ", Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.search:
+            /*case R.id.search:
                 Toast.makeText(getApplicationContext(), "검색 메뉴를 선택하였습니다. ", Toast.LENGTH_SHORT).show();
-                break;
+                break; */
 
             case R.id.setting:
                 Toast.makeText(getApplicationContext(), "환경 설정 메뉴를 선택하였습니다. ", Toast.LENGTH_SHORT).show();
