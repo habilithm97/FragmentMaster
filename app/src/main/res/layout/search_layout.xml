@@ -14,7 +14,7 @@
         android:id="@+id/edt"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="4dp"
+        android:layout_marginLeft="5dp"
         android:imeActionId="1337"
         android:imeOptions="actionDone"
         android:inputType="text" />
