@@ -1,7 +1,10 @@
 package com.example.fragmentmaster;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar; // 툴바는 이걸로
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
@@ -12,6 +15,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.tabs.TabLayout;
 
 /*
 
@@ -50,15 +55,22 @@ import android.widget.Toast;
  -> onDetach() : 프래그먼트가 액티비티와 연결을 끊기 바로 전에 호출됨
 
  */
+public class MainActivity extends AppCompatActivity {
 
-public class MainActivity extends AppCompatActivity implements ButtonFragment.ImageSelectionCallback{
+    Toolbar toolBar;
+
+    TabFragment1 tabFragment1;
+    TabFragment2 tabFragment2;
+    TabFragment3 tabFragment3;
+
+    /*
+public class MainActivity extends AppCompatActivity implements ButtonFragment.ImageSelectionCallback {
 
     ButtonFragment listFragment;
     ImageFragment viewerFragment;
 
     int[] images = {R.drawable.luck12, R.drawable.gitprofile, R.drawable.dingsung};
 
-    /*
     Fragment1 fragment1;
     Fragment2 fragment2;
     */
@@ -68,11 +80,57 @@ public class MainActivity extends AppCompatActivity implements ButtonFragment.Im
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        toolBar = findViewById(R.id.toolBar);
+        setSupportActionBar(toolBar); // 액션바를 직접 만들기 -> 액티비티에 디폴트로 만들어진 액션바가 없을 경우에만 동작함(Theme에서 NoActionBar일 경우)
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowTitleEnabled(false); // 액션바에 표시되는 제목의 표시유무를 설정함
+
+        tabFragment1 = new TabFragment1();
+        tabFragment2 = new TabFragment2();
+        tabFragment3 = new TabFragment3();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, tabFragment1).commit();
+
+        TabLayout tabLayout = findViewById(R.id.tabs);
+        // 큐브 타이머를 예시로
+        tabLayout.addTab(tabLayout.newTab().setText("스톱워치"));
+        tabLayout.addTab(tabLayout.newTab().setText("최근 기록"));
+        tabLayout.addTab(tabLayout.newTab().setText("평균 기록 "));
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                int position = tab.getPosition();
+
+                Fragment selected = null;
+                if(position == 0) {
+                    selected = tabFragment1;
+                } else if(position == 1) {
+                    selected = tabFragment2;
+                } else if(position == 2) {
+                    selected = tabFragment3;
+                }
+
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, selected).commit();
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        /*
         FragmentManager manager = getSupportFragmentManager();
         listFragment = (ButtonFragment)manager.findFragmentById(R.id.listFragment);
         viewerFragment = (ImageFragment)manager.findFragmentById(R.id.viewerFragment);
 
-        /*
         fragment1 = (Fragment1)getSupportFragmentManager().findFragmentById(R.id.fragment); // 메인 액티비티에 있는 프래그먼트는 부분 화면들을 담기 위한 틀임
         fragment2 = new Fragment2();
          */
@@ -118,12 +176,12 @@ public class MainActivity extends AppCompatActivity implements ButtonFragment.Im
         return super.onOptionsItemSelected(item);
     } //
 
+    /*
     @Override
     public void onImageSelected(int position) {
         viewerFragment.setImage(images[position]);
     }
 
-    /*
     public void onFragmentChanged(int index) { // beginTransaction() : 프래그먼트를 변경하기 위한 트랜잭션을 시작함, replace() : 프래그먼트 화면 전환, commit() : 실행
         if(index == 0) {
             getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment2).commit(); // 프래그먼트 매니저 객체를 사용할 때에는 트랜잭션이 사용됨(화면 전환 오류 발생 시 다시 원래 상태로 돌릴 수 있어야하므로)

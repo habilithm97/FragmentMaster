@@ -1,9 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/container"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--CoordibatorLayout은 액션바 영역을 포함한 전체 화면의 위치를 잡아주므로 가장 바깥쪽에 위치함 -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--AppBarLayout은 액션바이므로 안에는 ToolBar가 있고, 탭의 버튼들이 들어갈 수 있는 TabLayout,
+         화면을 구성할 수 있는 FrameLayout이 있음-->
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/purple_200"
+                android:elevation="2dp" >
+
+                <TextView
+                    android:id="@+id/titleTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="상단 탭 실습"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/aqua"
+                android:elevation="2dp"
+                app:tabGravity="fill"
+                app:tabMode="fixed"
+                app:tabSelectedTextColor="@color/blue"
+                app:tabTextColor="@color/black" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"> <!--CoordinatorLayout이 FrameLayout을
+             상속했기 때문에 이 속성이 없으면 AppBar와 중첩됨-->
+
+        </FrameLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <!--
 
     <fragment
         android:id="@+id/listFragment"
@@ -19,12 +70,10 @@
         android:layout_weight="1"
         android:name="com.example.fragmentmaster.ImageFragment" />
 
-
-    <!--
     <fragment
         android:id="@+id/fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:name="com.example.fragmentmaster.Fragment1" /> -->
 
-</LinearLayout>
+</RelativeLayout>
