@@ -2,19 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/jadu"
     android:orientation="vertical">
 
     <Button
         android:id="@+id/btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="스톱워치 입니다. " />
+        android:text="버튼" />
 
-    <Button
-        android:id="@+id/btn2"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="뷰페이저 테스트 액티비티로 이동하기 " />
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
